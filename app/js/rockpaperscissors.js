@@ -21,24 +21,25 @@ function randomPlay() {
 /*           Write Your Code Below            */
 ////////////////////////////////////////////////
 
-function getPlayerMove(move) {
+function getPlayerMove(pMove) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `getInput()`.
-if (! move){
-	var move = getInput();
+if (! pMove){
+      pMove = getInput();
+} 
+    return pmove;
 }
 
-    return move;
-}
-
-function getComputerMove(move) {
+function getComputerMove(cMove) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
-	if (! move){
-var move = randomPlay();
-}    
+if (! cMove){
+cMove = randomPlay();
+    
+}
+  
 return move;
 }
 
@@ -49,37 +50,37 @@ function getWinner(playerMove,computerMove) {
     // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
     /* YOUR CODE HERE */
     if (playerMove == "rock"){
-    	if (computerMove == "paper"){
-    	winner = "computer";
-    	}
-    	else if (computerMove =="scissors"){
-    	winner = "player";
-    	}
-    	else if (computerMove == "rock"){
-    	winner = "tie";
-    	}
+        if (computerMove == "paper"){
+        winner = "computer";
+        }
+        else if (computerMove =="scissors"){
+        winner = "player";
+        }
+        else if (computerMove == "rock"){
+        winner = "tie";
+        }
     }
     else if (playerMove == "paper"){
-    	if (computerMove == "paper"){
-    	winner = "tie";
-    	}
-    	else if (computerMove =="scissors"){
-    	winner = "computer";
-    	}
-    	else if (computerMove == "rock"){
-    	winner = "player";
-    	}
+        if (computerMove == "paper"){
+        winner = "tie";
+        }
+        else if (computerMove =="scissors"){
+        winner = "computer";
+        }
+        else if (computerMove == "rock"){
+        winner = "player";
+        }
     }
       else if (playerMove == "scissors"){
-    	if (computerMove == "paper"){
-    	winner = "player";
-    	}
-    	else if (computerMove =="scissors"){
-    	winner = "tie";
-    	}
-    	else if (computerMove == "rock"){
-    	winner = "computer";
-    	}
+        if (computerMove == "paper"){
+        winner = "player";
+        }
+        else if (computerMove =="scissors"){
+        winner = "tie";
+        }
+        else if (computerMove == "rock"){
+        winner = "computer";
+        }
     }
     return winner;
 }
@@ -88,8 +89,38 @@ function playToFive() {
     console.log("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
     var computerWins = 0;
-    // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
-    /* YOUR CODE HERE */
-    return [playerWins, computerWins];
+    var winner = "";
+    var playerMove;
+    var computerMove;
+    var foo = "";
+    var count = 0;
+    var max = 0;
+   
+   while (max < 6 && count < 10){
+
+    playerMove = getPlayerMove();
+    console.log("You picked " + playerMove);
+    
+    computerMove = getComputerMove();
+    console.log("computer played " + computerMove);
+    
+    winner = getWinner(playerMove,computerMove);
+     console.log("winner: " + winner);
+    if (winner === "computer"){
+        computerWins += 1;
+    } 
+    else if (winner === "player"){
+        playerWins += 1;
+    }
+    
+  
+   console.log("player:" + playerWins + " computer: " + computerWins);
+   count++;
+   console.log("count: " + count);
+    max = Math.max(playerWins,computerWins);
+    console.log("max:" + max);
+   }
+
 }
 
+playToFive();
