@@ -26,21 +26,20 @@ function getPlayerMove(pMove) {
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `getInput()`.
 if (! pMove){
-      pMove = getInput();
+      var pMove = getInput();
 } 
-    return pmove;
+    console.log("You picked " + pMove);
+    return pMove;
 }
 
 function getComputerMove(cMove) {
-    // Write an expression that operates on a variable called `move`
-    // If a `move` has a value, your expression should evaluate to that value.
-    // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
 if (! cMove){
-cMove = randomPlay();
+var cMove = randomPlay();
+    console.log("Computer picked " + cMove);
     
 }
   
-return move;
+return cMove;
 }
 
 function getWinner(playerMove,computerMove) {
@@ -60,6 +59,7 @@ function getWinner(playerMove,computerMove) {
         winner = "tie";
         }
     }
+
     else if (playerMove == "paper"){
         if (computerMove == "paper"){
         winner = "tie";
@@ -71,6 +71,7 @@ function getWinner(playerMove,computerMove) {
         winner = "player";
         }
     }
+
       else if (playerMove == "scissors"){
         if (computerMove == "paper"){
         winner = "player";
@@ -96,13 +97,12 @@ function playToFive() {
     var count = 0;
     var max = 0;
    
-   while (max < 6 && count < 10){
+   while (max <=5){
 
     playerMove = getPlayerMove();
-    console.log("You picked " + playerMove);
     
     computerMove = getComputerMove();
-    console.log("computer played " + computerMove);
+
     
     winner = getWinner(playerMove,computerMove);
      console.log("winner: " + winner);
@@ -118,7 +118,9 @@ function playToFive() {
    count++;
    console.log("count: " + count);
     max = Math.max(playerWins,computerWins);
-    console.log("max:" + max);
+    if (max ===5){
+        console.log("game over! Final score: player:" + playerWins + " computer: " + computerWins)
+    }
    }
 
 }
